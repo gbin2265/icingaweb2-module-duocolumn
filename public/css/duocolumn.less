@@ -1,0 +1,44 @@
+/**
+ * Duo Column Dashboard Styles
+ * 
+ * This stylesheet forces dashlets to display in a two column layout
+ * instead of the default multi-column grid. Each dashlet takes 50%
+ * of the dashboard container width.
+ */
+
+// Force all dashlets to two column layout
+.dashboard.duo-column {
+    // Keep the letter-spacing hack for inline-block whitespace removal
+    letter-spacing: -0.417em;
+    
+    > .container {
+        // Force 50% width for two column layout
+        display: inline-block !important;
+        letter-spacing: normal;
+        vertical-align: top;
+        width: 50% !important;
+        padding-right: 1em !important;
+        
+        &:last-of-type {
+            padding-right: 0 !important;
+        }
+    }
+}
+
+// Responsive adjustments - always two columns in this view
+#layout.wide-layout .dashboard.duo-column > .container:not(:only-child),
+#layout.default-layout .dashboard.duo-column > .container:not(:only-child),
+#layout.minimal-layout .dashboard.duo-column > .container:not(:only-child),
+#layout.twocols .dashboard.duo-column > .container:not(:only-child) {
+    width: 50% !important;
+    padding-right: 1em !important;
+    
+    &:last-of-type {
+        padding-right: 0 !important;
+    }
+}
+
+// When in two-column mode, still maintain duo column for dashboard
+#layout.twocols .dashboard.duo-column > .container {
+    width: 50% !important;
+}

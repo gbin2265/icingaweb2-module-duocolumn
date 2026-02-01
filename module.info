@@ -1,0 +1,7 @@
+Module: duocolumn
+Version: 1.0.0
+Description: Duo Column Dashboard
+ This module provides an alternative dashboard layout where dashlets are
+ displayed in two columns (side by side) instead of the default responsive
+ multi-column grid layout. Each column takes exactly 50% of the available
+ width, providing a consistent two-column layout on all screen sizes.
