@@ -14,22 +14,15 @@ The Duo Column Dashboard module provides an alternative way to view your Icinga 
 
 ## How It Works
 
-The module adds a new view (`/duocolumn/dashboard`) that loads your existing dashboard configuration but applies different CSS styling using flexbox to create a consistent two-column layout. No changes are made to your actual dashboard data - you can switch between grid and duo column views at any time.
+The module adds a new view (`/duocolumn/dashboard`) that loads your existing dashboard configuration but applies different CSS styling to create a consistent two-column layout. No changes are made to your actual dashboard data - you can switch between grid and duo column views at any time.
 
 ## Navigation
 
-- **Menu**: Dashboard → Duo Column
 - **URL**: `your-server/icingaweb2/duocolumn/dashboard`
 - **Tabs**: Use "Grid View" tab to switch back to normal layout
-
-## Responsive Behavior
-
-- **Desktop (> 900px)**: Two column layout as designed
-- **Mobile (< 900px)**: Falls back to single column for better readability
 
 ## Technical Details
 
 - Module directory: `/usr/share/icingaweb2/modules/duocolumn`
 - Configuration: None required (uses existing dashboard config)
 - CSS file: `public/css/duocolumn.less`
-- Layout: CSS Flexbox-based for reliable positioning
