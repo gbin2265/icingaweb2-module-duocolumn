@@ -1,44 +1,49 @@
 /**
  * Duo Column Dashboard Styles
  * 
- * This stylesheet forces dashlets to display in a two column layout
- * instead of the default multi-column grid. Each dashlet takes 50%
- * of the dashboard container width.
+ * Forces dashlets to display in a fixed two column (50%) layout
+ * regardless of Icinga Web 2 layout mode (default, wide, minimal, twocols)
  */
 
-// Force all dashlets to two column layout
+@gutter: 1em;
+
+// Base dashboard grid (same as Icinga layout.less)
 .dashboard.duo-column {
-    // Keep the letter-spacing hack for inline-block whitespace removal
     letter-spacing: -0.417em;
     
     > .container {
-        // Force 50% width for two column layout
-        display: inline-block !important;
+        display: inline-block;
         letter-spacing: normal;
         vertical-align: top;
         width: 50% !important;
-        padding-right: 1em !important;
+        padding-right: @gutter !important;
         
-        &:last-of-type {
-            padding-right: 0 !important;
-        }
+        // Prevent horizontal scrollbar - same behavior as standard dashboard
+        overflow-x: hidden;
     }
-}
-
-// Responsive adjustments - always two columns in this view
-#layout.wide-layout .dashboard.duo-column > .container:not(:only-child),
-#layout.default-layout .dashboard.duo-column > .container:not(:only-child),
-#layout.minimal-layout .dashboard.duo-column > .container:not(:only-child),
-#layout.twocols .dashboard.duo-column > .container:not(:only-child) {
-    width: 50% !important;
-    padding-right: 1em !important;
     
-    &:last-of-type {
+    // Last container never has right padding
+    > .container:last-of-type {
         padding-right: 0 !important;
     }
+    
+    // Single container takes full width
+    > .container:only-child {
+        padding-right: 0 !important;
+        width: 100% !important;
+    }
 }
 
-// When in two-column mode, still maintain duo column for dashboard
-#layout.twocols .dashboard.duo-column > .container {
-    width: 50% !important;
+// Force tables to fit within container
+.dashboard.duo-column > .container table {
+    table-layout: fixed;
+    width: 100%;
+}
+
+// Allow text truncation in table cells
+.dashboard.duo-column > .container td,
+.dashboard.duo-column > .container th {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
